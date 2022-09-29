@@ -49,5 +49,6 @@ After the reg producer transaction is successful, now your node starts to get a 
 tail -f $inerylog | ccze -A | grep $IneryAcc
 ```
 after a few minutes you will see logs like this
+
 ![img](./img/block_produced.jpg)
 
