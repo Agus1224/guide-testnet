@@ -160,6 +160,9 @@ cd; cline wallet create -n $name --file $name.txt
 cline wallet unlock -n $name --password $(cat $name.txt)
 cline wallet import -n $name --private-key $privkey
 
-echo -e "\n========================$bold$hijau SETUP FINISHED$reset ============================"
+echo -e "\n========================$bold$biru SETUP FINISHED$reset ============================"
+echo -e "Source vars environment:$bold$hijau source \$HOME/.bash_profile $reset"
+echo -e "Check your account name env vars:$bold$hijau echo $IneryAccname $reset"
+echo -e "Check your public-key env vars:$bold$hijau echo $IneryPubkey $reset"
 echo -e "Check logs with command:$bold$hijau tail -f \$inerylog | ccze -A $reset"
-echo -e "========================$bold$hijau SETUP FINISHED$reset ============================\n"
+echo -e "========================$bold$biru SETUP FINISHED$reset ============================\n"
