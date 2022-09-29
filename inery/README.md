@@ -6,7 +6,7 @@
 - [Inery testnet dashboard](https://testnet.inery.io/dashboard)
 - [Inery testnet explorer](https://explorer.inery.io)
 
-### Auto installation 
+## Auto installation 
 ```
 wget -O inery.sh https://raw.githubusercontent.com/jambulmerah/guide-testnet/main/inery/inery.sh && bash inery.sh
 ```
@@ -25,7 +25,7 @@ tail -f $inerylog | ccze -A
 - If the block is fully synced you will see something like this
 ![img](./img/sync_false.jpg)
 
-### Reg master mode as producer block
+## Reg master node as producer block
 After the block is fully synced, continue to register as a block producer
 
 >>NOTE: don't do this before the block is fully synced
