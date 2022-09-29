@@ -131,7 +131,7 @@ git clone https://github.com/inery-blockchain/inery-node
 
 # Edit permission and set vars
 echo -e "export PATH="$PATH":"$HOME"/inery-node/inery/bin:"$HOME"/inery-node/inery.setup/master.node" >> $HOME/.bash_profile
-echo -e "export IneryAcccname="$name"" >> $HOME/.bash_profile
+echo -e "export IneryAccname="$name"" >> $HOME/.bash_profile
 echo -e "export IneryPubkey="$pubkey"" >> $HOME/.bash_profile
 echo -e "export inerylog="$HOME"/inery-node/inery.setup/master.node/blockchain/nodine.log" >> $HOME/.bash_profile
 source $HOME/.bash_profile

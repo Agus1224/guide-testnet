@@ -33,7 +33,7 @@ After the block is fully synced, continue to register as a block producer
 - Unlock wallet
 command:
 ```
-cline wallet unlock -n $IneryAccname --password $IneryAccname.txt
+cline wallet unlock -n $IneryAccname --password $(cat $IneryAccname.txt)
 ```
 - Reg producer
 ```
