@@ -27,7 +27,8 @@ tail -f $inerylog | ccze -A
 
 ## Reg master node as producer block
 After the block is fully synced, continue to register as a block producer
-use command:
+- Start master node
+command:
 ```
 start.sh
 ```
