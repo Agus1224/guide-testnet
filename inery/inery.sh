@@ -160,6 +160,12 @@ cd; cline wallet create -n $name --file $name.txt
 cline wallet unlock -n $name --password $(cat $name.txt)
 cline wallet import -n $name --private-key $privkey
 
+# Enable firewall
+sudo ufw allow 8888,9010/tcp
+sudo ufw allow ssh
+sudo ufw limit ssh
+sudo ufw enable
+
 echo -e "\n========================$bold$biru SETUP FINISHED$reset ============================"
 echo -e "Source vars environment:$bold$hijau source \$HOME/.bash_profile $reset"
 echo -e "Check your account name env vars:$bold$hijau echo $IneryAccname $reset"
