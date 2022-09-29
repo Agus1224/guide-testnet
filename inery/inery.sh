@@ -131,7 +131,11 @@ git clone https://github.com/inery-blockchain/inery-node
 
 # Edit permission and set vars
 echo -e "export PATH="$PATH":"$HOME"/inery-node/inery/bin:"$HOME"/inery-node/inery.setup/master.node" >> $HOME/.bash_profile
+echo -e "export IneryAcccname="$name"" >> $HOME/.bash_profile
+echo -e "export IneryPubkey="$pubkey"" >> $HOME/.bash_profile
+echo -e "export inerylog="$HOME"/inery-node/inery.setup/master.node/blockchain/nodine.log" >> $HOME/.bash_profile
 source $HOME/.bash_profile
+sudo source $HOME/.bash_profile
 
 # Set config
 peers="$(curl -s ifconfig.me):9010"
@@ -155,10 +159,6 @@ rm -rf $HOME/inery-node/inery.setup/tempo*
 cd; cline wallet create -n $name --file $name.txt
 cline wallet unlock -n $name --password $(cat $name.txt)
 cline wallet import -n $name --private-key $privkey
-echo -e "export IneryAcccname="$name"" >> $HOME/.bash_profile
-echo -e "export IneryPubkey="$pubkey"" >> $HOME/.bash_profile
-echo -e "export inerylog="$HOME"/inery-node/inery.setup/master.node/blockchain/nodine.log" >> $HOME/.bash_profile
-source $HOME/.bash_profile
 
 echo -e "\n========================$bold$hijau SETUP FINISHED$reset ============================"
 echo -e "Check logs with command:$bold$hijau tail -f \$inerylog | ccze -A $reset"
