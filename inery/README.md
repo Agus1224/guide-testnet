@@ -28,7 +28,10 @@ tail -f $inerylog | ccze -A
 ## Reg master node as producer block
 After the block is fully synced, continue to register as a block producer
 
->>NOTE: don't do this before the block is fully synced
+```
+start.sh
+```
+>NOTE: don't do this before the block is fully synced
 
 - Unlock wallet
 command:
