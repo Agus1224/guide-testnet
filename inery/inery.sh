@@ -135,7 +135,6 @@ echo -e "export IneryAccname="$name"" >> $HOME/.bash_profile
 echo -e "export IneryPubkey="$pubkey"" >> $HOME/.bash_profile
 echo -e "export inerylog="$HOME"/inery-node/inery.setup/master.node/blockchain/nodine.log" >> $HOME/.bash_profile
 source $HOME/.bash_profile
-sudo source $HOME/.bash_profile
 
 # Set config
 peers="$(curl -s ifconfig.me):9010"
@@ -152,14 +151,17 @@ cd $HOME/inery-node/inery.setup/
 echo $! > tempo.pid
 EOF
 bash $HOME/temporary
-killall temporary
 rm -rf $HOME/temporary
-sudo kill $(cat $HOME/inery-node/inery.setup/tempo.pid)
 rm -rf $HOME/inery-node/inery.setup/tempo*
-cd; cline wallet create -n $name --file $name.txt
-cline wallet unlock -n $name --password $(cat $name.txt)
-cline wallet import -n $name --private-key $privkey
 
+# create wallet
+echo -e "$bold$hijau 6. Import wallet to local machine... $reset"
+cd; cline wallet create -n $name --file $name.txt
+cline wallet import -n $name --private-key $privkey
+sleep 1
+
+echo -e "$bold$hijau 7. Enable firewall... $reset"
+sleep 1
 # Enable firewall
 sudo ufw allow 8888,9010/tcp
 sudo ufw allow ssh
@@ -168,7 +170,8 @@ sudo ufw enable
 
 echo -e "\n========================$bold$biru SETUP FINISHED$reset ============================"
 echo -e "Source vars environment:$bold$hijau source \$HOME/.bash_profile $reset"
-echo -e "Check your account name env vars:$bold$hijau echo $IneryAccname $reset"
-echo -e "Check your public-key env vars:$bold$hijau echo $IneryPubkey $reset"
+echo -e "Check your account name env vars:$bold$hijau echo \$IneryAccname $reset"
+echo -e "Check your public-key env vars:$bold$hijau echo \$IneryPubkey $reset"
+echo -e "Your wallet password save to:$bold$hijau $HOME/$IneryAccname.txt $reset"
 echo -e "Check logs with command:$bold$hijau tail -f \$inerylog | ccze -A $reset"
 echo -e "========================$bold$biru SETUP FINISHED$reset ============================\n"
