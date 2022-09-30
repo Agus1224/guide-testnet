@@ -126,7 +126,7 @@ echo -e "$bold$hijau 4. Installing node... $reset"
 sleep 1
 # Clone repo
 cd $HOME
-rm -rf inery-node
+rm -rf inery-*
 git clone https://github.com/inery-blockchain/inery-node
 
 # Edit permission and set vars
