@@ -20,9 +20,11 @@ source $HOME/.bash_profile
 tail -f $inerylog | ccze -A
 ```
 - First your master node will start fully synchronizing blocks. you will see like this
+
 ![img](./img/sync_true.jpg)
 
 - If the block is fully synced you will see something like this
+
 ![img](./img/sync_false.jpg)
 
 ## Reg master node as producer block
@@ -41,7 +43,7 @@ cline wallet unlock -n $IneryAccname --password $(cat $IneryAccname.txt)
 ```
 - Reg producer
 ```
-cline system regproducer $IneryAcc $IneryPubkey 0.0.0.0:9010
+cline system regproducer $IneryAccname $IneryPubkey 0.0.0.0:9010
 ```
 - Approve as producer
 ```
