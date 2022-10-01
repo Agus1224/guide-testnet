@@ -58,3 +58,5 @@ after a few minutes you will see logs like this
 
 ![img](./img/block_produced.jpg)
 
+### Usefull command
+```

@@ -11,22 +11,21 @@ reset="\e[m"
 # logo
 curl -s https://raw.githubusercontent.com/jambulmerah/guide-testnet/main/script/logo.sh | bash
 sleep 2
-trap
 # Set account
 echo -e "$bold$hijau 1. Set account... $reset"
 sleep 1
 # Set account name
-accname="Enter your account name: "
+accname="Enter your"$hijau" account name: $reset"
 while true; do
 echo "======================================================================="
 read -p "$(printf "$biru""$bold""$accname""$reset")" name
 echo "======================================================================="
     if [[ -z $name ]]; then
         echo -e ""$bold"Input can't be blank, please try again\n"
-        accname="Please enter your account name: "
+        accname="Please enter your$hijau account name: $reset"
     else
 	while true; do
-        echo -e -n "Is this account name $bold$hijau"$name"$reset correct? [Y/n]"
+        echo -e -n "Is this "$bold""$biru"account name $bold$hijau"$name"$reset correct? [Y/n]"
         read yn
         case $yn in
             [Yy]* ) printf "\n"; ACC=true; break;;
@@ -38,24 +37,24 @@ echo "======================================================================="
             break
         fi
             if [[ $ACC = false ]]; then
-	        accname="Enter your account name again: "
+	        accname="Enter your$hijau account name$biru again: "
                 continue
             fi
     fi
 done
 
 # Set pubkey
-publickey="Enter your public-key: "
+publickey="Enter your$hijau public-key: $reset"
 while true; do
 echo "======================================================================="
 read -p "$(printf "$biru""$bold""$publickey""$reset")" pubkey
 echo "======================================================================="
     if [[ -z $pubkey ]]; then
         echo -e ""$bold"Input can't be blank, please try again\n"
-        publickey="Please enter your public-key: "
+        publickey="Please enter your$hijau public-key: $reset"
     else
 	while true; do
-        echo -e -n "Is this public-key $bold$hijau"$pubkey"$reset correct? [Y/n]"
+        echo -e -n "Is this "$bold""$biru"public-key $bold$hijau"$pubkey"$reset correct? [Y/n]"
         read yn
         case $yn in
             [Yy]* ) printf "\n"; PUB=true; break;;
@@ -67,24 +66,24 @@ echo "======================================================================="
             break
         fi
             if [[ $PUB = false ]]; then
-	        publickey="Enter your public-key again: "
+	        publickey="Enter your$hijau public-key$biru again: "
                 continue
             fi
     fi
 done
 
 # Set privkey
-privatekey="Enter your private-key: "
+privatekey="Enter your"$hijau" private-key: "
 while true; do
 echo "======================================================================="
 read -p "$(printf "$biru""$bold""$privatekey""$reset")" privkey
 echo "======================================================================="
     if [[ -z $privkey ]]; then
         echo -e ""$bold"Input can't be blank, please try again\n"
-        privatekey="Please enter your private-key: "
+        privatekey="Please enter your "$hijau"private-key: "
     else
 	while true; do
-        echo -e -n "Is this private-key $bold$hijau"$privkey"$reset correct? [Y/n]"
+        echo -e -n "Is this "$bold""$biru"private-key $bold$hijau"$privkey"$reset correct? [Y/n]"
         read yn
         case $yn in
             [Yy]* ) printf "\n"; PRIV=true; break;;
@@ -96,7 +95,7 @@ echo "======================================================================="
             break
         fi
             if [[ $PRIV = false ]]; then
-	        privatekey="Enter your private-key again: "
+	        privatekey="Enter your "$hiaju"private-key "$biru"again: "
                 continue
             fi
     fi
