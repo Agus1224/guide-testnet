@@ -15,98 +15,104 @@ sleep 2
 echo -e "$bold$hijau 1. Set account... $reset"
 sleep 1
 # Set account name
-accname="Enter your"$hijau" account name: $reset"
+accname=""$bold""$hijau"account name"$reset""
+accID="Enter your $accname: $reset"
+invalid_input=""$bold""$merah"Invalid input. Please select yes or no\n"$reset""
+invalid_format=""$bold""$merah"Format is not correct$reset\n"
+format=""$bold""$UL""$hijau""
+bline="======================================================================="
 while true; do
-echo "======================================================================="
-read -p "$(printf "$biru""$bold""$accname""$reset")" name
-echo "======================================================================="
-    if [[ -z $name ]]; then
-        echo -e ""$bold"Input can't be blank, please try again\n"
-        accname="Please enter your$hijau account name: $reset"
+echo "$bline"
+read -p "$(printf "$accID""$reset")" name
+echo -e "$bline\n"
+    if [[ ! "$name" =~ [.a-z1-5][a-z1-5]$ ]] || [[ ${#name} -ge 13 ]] || [[ ${#name} -le 3 ]];then
+        echo -e ""$invalid_format""$bold""$merah"Name can have maxiumum of 12 charachters ASCII lowercase a-z, 1-5 and dot character "." but dot can't be at the end of string\n"$reset""
+	accID="Please enter your correct $accname: "
     else
 	while true; do
-        echo -e -n "Is this "$bold""$biru"account name $bold$hijau"$name"$reset correct? [Y/n]"
+        echo -e -n "Is this $accname "$format""$name""$reset" correct? [Y/n]"
         read yn
         case $yn in
             [Yy]* ) printf "\n"; ACC=true; break;;
             [Nn]* ) printf "\n"; ACC=false; break;;
-            * ) echo -e ""$bold"Invalid input. Please select yes or no\n"$reset"";;
+            * ) echo -e "$invalid_input"; echo -e "$bline\n";;
         esac
         done
         if [[ $ACC = true ]]; then
             break
         fi
             if [[ $ACC = false ]]; then
-	        accname="Enter your$hijau account name$biru again: "
-                continue
-            fi
+                accID="Please enter your $accname again: "
+		continue
+	fi
     fi
 done
 
 # Set pubkey
-publickey="Enter your$hijau public-key: $reset"
+
+pubkeyname="$bold""$hijau"public-key"$reset"
+publickey="Enter your "$pubkeyname": $reset"
 while true; do
-echo "======================================================================="
-read -p "$(printf "$biru""$bold""$publickey""$reset")" pubkey
-echo "======================================================================="
-    if [[ -z $pubkey ]]; then
-        echo -e ""$bold"Input can't be blank, please try again\n"
-        publickey="Please enter your$hijau public-key: $reset"
+echo $bline
+read -p "$(printf "$publickey""$reset")" pubkey
+echo -e "$bline\n"
+    if [[ ${#pubkey} -ne 53 ]] || [[ ${pubkey:0:3} != "INE" ]]; then
+        echo -e "$pubkeyname" "$invalid_format"
+        publickey="Please enter your correct $pubkeyname: $reset"
     else
 	while true; do
-        echo -e -n "Is this "$bold""$biru"public-key $bold$hijau"$pubkey"$reset correct? [Y/n]"
+        echo -e -n "Is this $pubkeyname "$format""$pubkey"$reset correct? [Y/n]"
         read yn
         case $yn in
             [Yy]* ) printf "\n"; PUB=true; break;;
             [Nn]* ) printf "\n"; PUB=false; break;;
-            * ) echo -e ""$bold"Invalid input. Please select yes or no\n"$reset"";;
+            * ) echo -e "$invalid_input";;
         esac
         done
-        if [[ $PUB = true ]]; then
-            break
+        if [ $PUB = true ]; then
+	    break
         fi
             if [[ $PUB = false ]]; then
-	        publickey="Enter your$hijau public-key$biru again: "
+	        publickey="Enter your $pubkeyname again: "
                 continue
             fi
     fi
 done
 
 # Set privkey
-privatekey="Enter your"$hijau" private-key: "
+privkeyname="$bold""$hijau"private-key"$reset"
+privatekey="Enter your"$hijau" $privkeyname: "
 while true; do
-echo "======================================================================="
-read -p "$(printf "$biru""$bold""$privatekey""$reset")" privkey
-echo "======================================================================="
-    if [[ -z $privkey ]]; then
-        echo -e ""$bold"Input can't be blank, please try again\n"
-        privatekey="Please enter your "$hijau"private-key: "
+echo -e "$bline"
+read -p "$(printf "$privatekey""$reset")" privkey
+echo -e "$bline\n"
+    if [[ ${#privkey} -ne 51 ]] || [[ ${privkey:0:1} != "5" ]]; then
+        echo -e "$privkeyname" "$invalid_format"
+        privatekey="Please enter your correct $privkeyname: $reset"
     else
 	while true; do
-        echo -e -n "Is this "$bold""$biru"private-key $bold$hijau"$privkey"$reset correct? [Y/n]"
+        echo -e -n "Is this $privkeyname "$format""$privkey"$reset correct? [Y/n]"
         read yn
         case $yn in
             [Yy]* ) printf "\n"; PRIV=true; break;;
             [Nn]* ) printf "\n"; PRIV=false; break;;
-            * ) echo -e ""$bold"Invalid input. Please select yes or no\n"$reset"";;
+            * ) echo -e "$invalid_input";;
         esac
         done
         if [[ $PRIV = true ]]; then
             break
         fi
             if [[ $PRIV = false ]]; then
-	        privatekey="Enter your "$hiaju"private-key "$biru"again: "
+	        privatekey="Enter your $privkeyname again: "
                 continue
             fi
     fi
 done
-echo "======================================================================="
-echo -e "Your account name is: $bold$hijau$name$reset"
-echo -e "Your pub-key is: $bold$hijau$pubkey$reset"
-echo -e "Your priv-key is: $bold$hijau$privkey$reset"
-echo "======================================================================="
-echo
-sleep 2
+echo -e "$bline"
+echo -e "Your $accname is: $bold$hijau$name$reset"
+echo -e "Your $pubkeyname is: $bold$hijau$pubkey$reset"
+echo -e "Your $privkeyname is: $bold$hijau$privkey$reset"
+echo -e "$bline\n"
 
 # Update upgrade
 echo -e "$bold$hijau 2. Updating packages... $reset"
